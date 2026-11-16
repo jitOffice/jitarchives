@@ -1,0 +1,15 @@
+# JitArchives 官网搜索抓取规则
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /login
+Disallow: /register
+Disallow: /dashboard
+Disallow: /archives
+Disallow: /borrow
+Disallow: /audit
+Disallow: /users
+Disallow: /system
+
+# Sitemap
+Sitemap: https://archive.jitword.com/sitemap.xml
