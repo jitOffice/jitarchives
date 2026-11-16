@@ -1,0 +1,33 @@
+{
+  "name": "@jitarchives/api",
+  "version": "0.2.0",
+  "private": true,
+  "description": "JitArchives 正式系统后端（NestJS + SQLite）",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "start": "node dist/main.js",
+    "test": "node --test test/api.e2e.test.mjs test/admin-guard.repository.test.mjs test/archives.e2e.test.mjs test/jitword.e2e.test.mjs test/jitword-origin.test.mjs test/metadata-templates.e2e.test.mjs test/borrowing.e2e.test.mjs test/dashboard.e2e.test.mjs test/preview.e2e.test.mjs test/audit.e2e.test.mjs test/audit-presentation.test.mjs test/security-regression.e2e.test.mjs test/backup-restore.e2e.test.mjs test/agent.e2e.test.mjs test/agent-progress.test.mjs test/content-search.e2e.test.mjs test/cjk-bigram-index.test.mjs test/agent-business.e2e.test.mjs test/unified-search.e2e.test.mjs test/auth-invitation.e2e.test.mjs test/device-registration.e2e.test.mjs test/agent-ai-settings.e2e.test.mjs test/agent-intent-regression.test.mjs test/agent-tool-dispatcher.test.mjs test/agent-tool-calling.e2e.test.mjs test/agent-context-answer.e2e.test.mjs test/agent-context-evidence.test.mjs test/knowledge-rag.e2e.test.mjs test/index-reliability.test.mjs test/grounded-answer.test.mjs test/citation-diagnostics.test.mjs test/citation-implicit-quote.test.mjs test/agent-retrieval-loop.e2e.test.mjs test/agent-multichannel.e2e.test.mjs test/retrieval-plan.e2e.test.mjs test/answer-generation.test.mjs test/agent-summary.e2e.test.mjs test/agent-dual-fix.e2e.test.mjs test/dynamic-plan-exec.test.mjs test/retrieval-plan-real-outputs.test.mjs test/agent-capability-upgrade.e2e.test.mjs test/knowledge-graph-build.test.mjs test/knowledge-graph-similarity.test.mjs test/knowledge-graph-query.e2e.test.mjs test/agent-graph.e2e.test.mjs test/agent-citations.e2e.test.mjs",
+    "test:graph": "node --test test/knowledge-graph-build.test.mjs test/knowledge-graph-similarity.test.mjs test/knowledge-graph-query.e2e.test.mjs test/agent-graph.e2e.test.mjs test/knowledge-graph-race.test.mjs test/agent-citations.e2e.test.mjs",
+    "test:agent": "node --test test/agent*.mjs test/answer-generation.test.mjs test/grounded-answer.test.mjs test/retrieval-plan.e2e.test.mjs test/retrieval-plan-real-outputs.test.mjs test/dynamic-plan-exec.test.mjs test/agent-capability-upgrade.e2e.test.mjs test/agent-citations.e2e.test.mjs",
+    "test:retrieval": "node --test test/cjk-bigram-index.test.mjs test/dynamic-plan-exec.test.mjs test/retrieval-plan.e2e.test.mjs test/retrieval-plan-real-outputs.test.mjs test/agent-multichannel.e2e.test.mjs test/agent-retrieval-loop.e2e.test.mjs test/agent-tool-dispatcher.test.mjs test/agent-intent-regression.test.mjs test/agent-context-evidence.test.mjs",
+    "test:e2e:live": "node --test test/e2e-live/provider-preflight.mjs test/e2e-live/live-acceptance.mjs",
+    "test:capability": "node --test test/agent-capability-upgrade.e2e.test.mjs test/answer-generation.test.mjs test/citation-diagnostics.test.mjs test/cjk-bigram-index.test.mjs test/dynamic-plan-exec.test.mjs"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/core": "^11.1.0",
+    "@nestjs/platform-express": "^11.1.0",
+    "cookie-parser": "^1.4.7",
+    "pizzip": "^3.3.0",
+    "reamkit": "^1.34.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.8",
+    "@types/express": "^4.17.21",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.7.2"
+  }
+}

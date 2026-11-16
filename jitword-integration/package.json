@@ -1,0 +1,15 @@
+{
+  "name": "jitword-integration",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "JitArchives 阶段一：JitWord 接入验证（零依赖，含自检脚本）",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "config:import": "node tools/import-config.mjs",
+    "check": "node tools/selfcheck.mjs"
+  }
+}

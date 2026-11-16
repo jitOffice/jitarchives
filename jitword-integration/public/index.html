@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>JitArchives 阶段一 · JitWord 接入验证</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <strong>JitWord 接入验证</strong>
+      <span class="tag">阶段一 · 仅测试</span>
+    </div>
+    <div class="identities">
+      <a id="identity-editor" class="identity" href="?identity=editor">编辑身份</a>
+      <a id="identity-viewer" class="identity" href="?identity=viewer">只读身份</a>
+    </div>
+    <div class="actions">
+      <button id="btn-save" type="button">保存</button>
+      <button id="btn-export" type="button">导出 DOCX</button>
+      <button id="btn-import-sample" type="button">导入内置测试 DOCX</button>
+      <button id="btn-import-file" type="button">选择本地 DOCX</button>
+      <input id="file-input" type="file" accept=".docx" hidden />
+      <button id="btn-probe-write" type="button">验证只读权限</button>
+      <button id="btn-read-content" type="button">读取正文</button>
+      <button id="btn-reload" type="button">重新加载</button>
+    </div>
+  </header>
+
+  <p class="notice">
+    测试身份切换（编辑／只读）<strong>尚未接入正式业务登录</strong>，权限由后端换票时决定，仅用于本次接入验证。
+    文档正文保存在 JitWord 服务端，演示环境不承诺可用性与备份，请勿放入真实业务数据。
+  </p>
+
+  <section class="grid">
+    <div><span>握手状态</span><b id="f-ready">未开始</b></div>
+    <div><span>SDK 版本</span><b id="f-sdk">-</b></div>
+    <div><span>测试身份</span><b id="f-identity">-</b></div>
+    <div><span>票据实际 scopes</span><b id="f-scopes">-</b></div>
+    <div><span>票据 origin</span><b id="f-origin">-</b></div>
+    <div><span>页面 origin</span><b id="f-page-origin">-</b></div>
+    <div><span>docId</span><b id="f-docid">-</b></div>
+    <div><span>校验标记（请在正文输入这句）</span><b id="f-marker">-</b></div>
+    <div><span>保存状态</span><b id="f-save">-</b></div>
+    <div><span>导出结果</span><b id="f-export">-</b></div>
+    <div><span>导入结果</span><b id="f-import">-</b></div>
+    <div><span>只读权限验证</span><b id="f-probe">-</b></div>
+  </section>
+
+  <p id="probe-recovery" class="probe-recovery" hidden>
+    验证失败后若页面状态异常（例如 iframe 内仍残留错误弹窗），可
+    <button id="btn-probe-recovery" type="button">重新加载页面</button>
+    恢复。“验证只读权限”只在专属探测文档上执行，验证主文档的正文不会被改动。
+  </p>
+
+  <main class="editor-wrap">
+    <div id="jitwordEditor"></div>
+  </main>
+
+  <!-- “验证只读权限”专用：独立文档 + 离屏渲染，写入只会发生在探测文档上 -->
+  <div class="probe-stage-wrap" aria-hidden="true">
+    <div id="probe-stage"></div>
+  </div>
+
+  <section class="log">
+    <div class="log-head">
+      <strong>运行日志</strong>
+      <button id="btn-clear-log" type="button">清空</button>
+    </div>
+    <ol id="log-list"></ol>
+  </section>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

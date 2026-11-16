@@ -1,0 +1,22 @@
+# 构建镜像时排除：依赖/产物在镜像内重建，敏感数据与本地文件绝不进镜像层
+node_modules
+**/node_modules
+apps/*/dist
+apps/*/storage
+.git
+.gitignore
+*.log
+logs
+coverage
+.env
+jiword_config.txt
+jitword-integration/config/config.local.json
+backups
+jitarchives-backup-*
+*.db
+*.db-wal
+*.db-shm
+*.db-journal
+Dockerfile
+docker-compose.yml
+.dockerignore

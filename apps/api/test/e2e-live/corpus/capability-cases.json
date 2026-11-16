@@ -1,0 +1,102 @@
+[
+  {
+    "tag": "attachment",
+    "actor": "admin",
+    "question": "找到名为项目交付说明的附件，说明里面尚未完成的工作。",
+    "expected": {
+      "id": "cap-attachment",
+      "scope": "all current-user authorized archives",
+      "requiredSources": [
+        "project"
+      ],
+      "keyFacts": [
+        "接口联调"
+      ],
+      "evidenceLocations": {
+        "project": "current-version TXT original indexed line positions"
+      },
+      "expectedBehavior": "元数据无项目名称，独立定位附件标题并阅读正文",
+      "independentBlind": false
+    }
+  },
+  {
+    "tag": "semantic",
+    "actor": "admin",
+    "question": "哪些资料讲了设备移交验收完成之后才结清剩余货款？",
+    "expected": {
+      "id": "cap-semantic",
+      "scope": "all current-user authorized archives",
+      "requiredSources": [
+        "spectrometer"
+      ],
+      "keyFacts": [
+        "四十五日"
+      ],
+      "evidenceLocations": {
+        "spectrometer": "current-version TXT original indexed line positions"
+      },
+      "expectedBehavior": "用语义描述召回真实合同；Embedding 缺失不能称语义验收通过",
+      "independentBlind": false
+    }
+  },
+  {
+    "tag": "project",
+    "actor": "admin",
+    "question": "青岚建设项目现在推进到哪里了，还有什么待办？",
+    "expected": {
+      "id": "cap-project",
+      "scope": "all current-user authorized archives",
+      "requiredSources": [
+        "project"
+      ],
+      "keyFacts": [
+        "接口联调"
+      ],
+      "evidenceLocations": {
+        "project": "current-version TXT original indexed line positions"
+      },
+      "expectedBehavior": "依据真实项目正文归纳进展，不猜测未记录的计划",
+      "independentBlind": false
+    }
+  },
+  {
+    "tag": "multi",
+    "actor": "admin",
+    "question": "将青岚建设项目的交付说明和阶段记录全部读完，分别概括再综合。",
+    "expected": {
+      "id": "cap-multi",
+      "scope": "all current-user authorized archives",
+      "requiredSources": [
+        "project"
+      ],
+      "keyFacts": [
+        "最终验收记录"
+      ],
+      "evidenceLocations": {
+        "project": "current-version TXT original indexed line positions"
+      },
+      "expectedBehavior": "逐附件完整读取，长正文分批处理，最终回答不得遗漏来源",
+      "independentBlind": false
+    }
+  },
+  {
+    "tag": "open",
+    "actor": "admin",
+    "question": "围绕仪器采购，请依据现有资料归纳最值得留意的履约事项。",
+    "expected": {
+      "id": "cap-open",
+      "scope": "all current-user authorized archives",
+      "requiredSources": [
+        "spectrometer"
+      ],
+      "keyFacts": [
+        "四十五日"
+      ],
+      "evidenceLocations": {
+        "spectrometer": "current-version TXT original indexed line positions"
+      },
+      "expectedBehavior": "开放问题交由AI规划并综合，事实均可追溯",
+      "independentBlind": false
+    }
+  }
+]

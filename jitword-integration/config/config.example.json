@@ -1,0 +1,10 @@
+{
+  "api": "https://inner.jitword.com/api/v1",
+  "tenantKey": "your-tenant",
+  "providerKey": "your-app",
+  "clientSecret": "",
+  "origin": "",
+  "docId": "",
+  "editorUrl": "",
+  "port": 3000
+}

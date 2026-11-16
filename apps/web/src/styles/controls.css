@@ -1,0 +1,278 @@
+/**
+ * 全局控件皮肤层（阶段二 UI 一致性改造）。
+ *
+ * 约定：
+ * - 本文件只做「原生控件外观归一」与「全局交互态统一」，业务页面不再重复写
+ *   textarea / 禁用 / 焦点 / 滚动条样式；
+ * - 视觉效果全部取自 global.css 的设计变量，不引入新的色值体系；
+ * - 自研控件（AppSelect / AppDatePicker / AppNumberInput …）统一复用 `.ui-control`
+ *   基类，保证高度、圆角、边框、焦点环与原生输入框完全一致。
+ */
+:root {
+  --border-control: #e5e6eb;
+  --border-control-hover: #c9cdd4;
+  --bg-disabled: #f7f8fa;
+  --text-placeholder: #c9cdd4;
+  --radius-sm: 6px;
+  --control-h: 36px;
+  --control-h-sm: 28px;
+  --shadow-pop: 0 8px 24px rgba(29, 33, 41, 0.12);
+  --ring: 0 0 0 3px rgba(22, 93, 255, 0.12);
+  --z-modal: 100;
+  --z-popover: 200;
+  --z-toast: 3000;
+  --dur: 0.15s;
+}
+
+/* ===== 文本域：各页面原先各写一份，收敛到全局 ===== */
+.field textarea,
+.ui-textarea {
+  width: 100%;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-control);
+  padding: 9px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-title);
+  background: #fff;
+  outline: none;
+  resize: vertical;
+  transition: border-color var(--dur) ease, box-shadow var(--dur) ease, background var(--dur) ease;
+}
+
+/* ===== 焦点态：输入类控件统一「主色边框 + 浅色光环」 ===== */
+.field input:not([type='checkbox']):not([type='radio']):focus,
+.field select:focus,
+.field textarea:focus,
+.ui-textarea:focus,
+.ui-control:focus-visible,
+.ui-control.is-open {
+  border-color: var(--color-primary);
+  box-shadow: var(--ring);
+  outline: none;
+}
+
+.ui-control:hover:not(:disabled):not(.is-disabled):not(.is-open) {
+  border-color: var(--border-control-hover);
+}
+
+/* 键盘可达性：按钮 / 链接 / 列表项 / 表格内可点击元素统一焦点环 */
+button:focus-visible,
+a:focus-visible,
+[role='option']:focus-visible,
+[role='button']:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid rgba(22, 93, 255, 0.65);
+  outline-offset: 2px;
+}
+
+/* ===== 禁用态：统一底色、文字与光标（复选框/单选框不参与） ===== */
+.field input:not([type='checkbox']):not([type='radio']):disabled,
+.field select:disabled,
+.field textarea:disabled,
+.ui-textarea:disabled,
+input:not([type='checkbox']):not([type='radio']):disabled,
+select:disabled,
+textarea:disabled,
+.ui-control:disabled,
+.ui-control.is-disabled {
+  background: var(--bg-disabled);
+  color: var(--text-muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ===== 占位符 ===== */
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-placeholder);
+  opacity: 1;
+}
+
+/* ===== 原生 select：兜底统一为自绘箭头（改造后页面已不再直接使用） ===== */
+select:not(.ui-select-native) {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 32px;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2386909c' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 12px 7px;
+  cursor: pointer;
+}
+
+/* ===== 原生数字框：隐藏原生上下箭头，保留 min/max/step 与键盘步进 ===== */
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* ===== 原生日期框：统一图标与热区（自研日期组件前的兜底） ===== */
+input[type='date']::-webkit-calendar-picker-indicator {
+  padding: 3px;
+  border-radius: 4px;
+  opacity: 0.55;
+  cursor: pointer;
+}
+input[type='date']::-webkit-calendar-picker-indicator:hover {
+  background: var(--color-primary-soft);
+  opacity: 1;
+}
+
+/* ===== 文件选择：统一由按钮触发，原生控件不直接露出 ===== */
+input[type='file'] {
+  display: none;
+}
+
+/* ===== 自研控件基类 ===== */
+.ui-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  min-height: var(--control-h);
+  padding: 7px 12px;
+  border: 1px solid var(--border-control);
+  border-radius: var(--radius-control);
+  background: #fff;
+  color: var(--text-title);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--dur) ease, box-shadow var(--dur) ease, background var(--dur) ease;
+}
+.ui-control--sm {
+  min-height: var(--control-h-sm);
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+}
+.ui-control__value {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.ui-control__value.is-placeholder {
+  color: var(--text-placeholder);
+}
+.ui-control__caret {
+  flex: 0 0 auto;
+  color: var(--text-muted);
+  transition: transform var(--dur) ease;
+}
+.ui-control.is-open .ui-control__caret {
+  transform: rotate(180deg);
+}
+
+/* 加载转圈：工作台原先内联一份，统一到全局供 AppLoading 复用 */
+.ui-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-primary-soft);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: ui-spin 0.8s linear infinite;
+}
+.ui-spinner--sm {
+  width: 13px;
+  height: 13px;
+  border-width: 2px;
+}
+@keyframes ui-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== 滚动条：内容区、表格容器、弹窗、下拉面板、文本域统一 ===== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(29, 33, 41, 0.18) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: rgba(29, 33, 41, 0.18);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(29, 33, 41, 0.34);
+  background-clip: padding-box;
+}
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ===== 危险操作主按钮：与主色按钮同尺寸、同层级 ===== */
+.btn-danger-solid {
+  background: var(--color-danger);
+  border-color: var(--color-danger);
+  color: #fff;
+}
+.btn-danger-solid:hover:not(:disabled) {
+  background: #d92b2b;
+  border-color: #d92b2b;
+  color: #fff;
+}
+
+/* ===== 表单说明文字 ===== */
+.field .hint {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ===== 选中文本 ===== */
+::selection {
+  background: var(--color-primary-soft);
+  color: var(--text-title);
+}
+
+/* ===== 移动端：触控目标与防缩放字号 ===== */
+@media (max-width: 767px) {
+  .ui-control {
+    min-height: 40px;
+    font-size: 16px;
+  }
+  .ui-control--sm {
+    min-height: 32px;
+    font-size: 13px;
+  }
+  .field textarea,
+  .ui-textarea {
+    font-size: 16px;
+  }
+}
+
+/* ===== 减少动效偏好 ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

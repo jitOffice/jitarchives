@@ -1,0 +1,17 @@
+# 本地敏感配置（含 clientSecret），禁止提交
+config/config.local.json
+.env
+.env.*
+
+# 运行数据：docId 缓存、导出的 docx、日志
+runtime/
+
+# 官方示例包与抓取的 SDK 产物（可重新下载，避免入库大文件）
+_source/*.zip
+_source/jitword-embed-demo/
+_source/loader.v1.js
+_source/probe-out.txt
+
+# 依赖与临时文件
+node_modules/
+*.log

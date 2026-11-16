@@ -1,0 +1,30 @@
+{
+  "name": "@jitarchives/web",
+  "version": "0.2.0",
+  "private": true,
+  "description": "JitArchives 正式系统前端（Vue 3 + TypeScript + Pinia）",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "preview": "vite preview",
+    "test": "node --experimental-transform-types --test test/knowledge-graph.logic.test.mjs test/knowledge-graph.layout.test.mjs test/knowledge-graph.panels.test.mjs test/knowledge-graph.store.test.mjs test/agent-citations.test.mjs",
+    "test:graph": "node --experimental-transform-types --test test/knowledge-graph.logic.test.mjs test/knowledge-graph.layout.test.mjs test/knowledge-graph.panels.test.mjs test/knowledge-graph.store.test.mjs test/agent-citations.test.mjs",
+    "test:graph:ui": "node --test test/knowledge-graph.ui.e2e.test.mjs",
+    "test:e2e": "node --test test/agent-flow.e2e.test.mjs",
+    "test:citations:ui": "node --test test/agent-citations.ui.e2e.test.mjs"
+  },
+  "dependencies": {
+    "@fingerprintjs/fingerprintjs": "^4.5.0",
+    "pinia": "^2.3.0",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "playwright": "^1.64.1",
+    "typescript": "^5.7.2",
+    "vite": "^6.3.5",
+    "vue-tsc": "^2.2.0"
+  }
+}

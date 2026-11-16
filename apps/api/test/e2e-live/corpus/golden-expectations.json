@@ -1,0 +1,336 @@
+[
+  {
+    "id": "golden-01",
+    "question": "光谱仪那份合同的尾款到底要多久之内付清，依据是什么？",
+    "tag": "answerable",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer"
+    ],
+    "keyFacts": [
+      "四十五日"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-02",
+    "question": "采购合同里约定的违约金比例是怎么算的？",
+    "tag": "answerable",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer",
+      "centrifuge"
+    ],
+    "keyFacts": [
+      "万分之五"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position",
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-03",
+    "question": "帮我对比一下光谱仪合同和离心机合同，在付款期限上有什么不同？",
+    "tag": "compare",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer",
+      "centrifuge"
+    ],
+    "keyFacts": [
+      "四十五日",
+      "三十日"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position",
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-04",
+    "question": "把光谱仪采购合同的主要商务条款给我梳理归纳一下。",
+    "tag": "summary",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer"
+    ],
+    "keyFacts": [
+      "1280000",
+      "四十五日"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-05",
+    "question": "我现在能看到的设备采购类档案都有哪些，大概都处于什么状态？",
+    "tag": "listing",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer",
+      "centrifuge"
+    ],
+    "keyFacts": [],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position",
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "数据库清单至少包含两份设备采购档案，数量和状态来自真实记录",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-06",
+    "question": "以光谱仪这份合同为参考，在我全部能访问的档案里找找有没有付款条款类似的其他合同？",
+    "tag": "reference",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": "named or previous spectrometer attachment",
+    "requiredSources": [
+      "centrifuge"
+    ],
+    "keyFacts": [
+      "三十日"
+    ],
+    "evidenceLocations": {
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "以参考附件有效正文为依据，在全部授权范围寻找其他档案，不能只比标题",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-07",
+    "question": "根据现有档案，我们 2027 年计划收购哪家上市公司？",
+    "tag": "nobasis",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [],
+    "keyFacts": [],
+    "evidenceLocations": {},
+    "expectedBehavior": "说明证据不足，不能生成正文事实、未来预测或混入无关合同事实",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-08",
+    "question": "档案里有没有关于我们公司下个月股价走势的记录？",
+    "tag": "nobasis",
+    "actor": "admin",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [],
+    "keyFacts": [],
+    "evidenceLocations": {},
+    "expectedBehavior": "说明证据不足，不能生成正文事实、未来预测或混入无关合同事实",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-09",
+    "question": "涉密项目预算里批的具体金额是多少？",
+    "tag": "permission",
+    "actor": "borrower",
+    "sourceCorpus": "自然语言问法集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [],
+    "keyFacts": [],
+    "evidenceLocations": {},
+    "expectedBehavior": "不得返回 restricted 档案及 8800000 标记，允许澄清或无依据拒答",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-10",
+    "question": "我之前签的那个买光谱仪的合同，付尾款的时间是怎么规定的来着？",
+    "tag": "answerable",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer"
+    ],
+    "keyFacts": [
+      "四十五日"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-11",
+    "question": "那批光学仪器的采购买卖，违约要赔多少，合同里咋写的？",
+    "tag": "answerable",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer"
+    ],
+    "keyFacts": [
+      "万分之五"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-12",
+    "question": "两份买仪器的合同，一个光谱一个离心，它们在给钱快慢上有啥去别？",
+    "tag": "compare",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer",
+      "centrifuge"
+    ],
+    "keyFacts": [
+      "四十五日",
+      "三十日"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position",
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-13",
+    "question": "光谱仪采购那份合同，能帮我大致讲讲里面都约定了哪些事儿不？",
+    "tag": "summary",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer"
+    ],
+    "keyFacts": [
+      "1280000",
+      "四十五日"
+    ],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "仅依据授权证据回答，并保留原文位置",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-14",
+    "question": "我账户底下跟买东西采购相关的卷宗都给我列一列呗",
+    "tag": "listing",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [
+      "spectrometer",
+      "centrifuge"
+    ],
+    "keyFacts": [],
+    "evidenceLocations": {
+      "spectrometer": "current-version TXT fixture, indexed original line position",
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "数据库清单至少包含两份设备采购档案，数量和状态来自真实记录",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-15",
+    "question": "照光谱仪合同那个付款样子，我这儿还有没有差不多条件的合同？",
+    "tag": "reference",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": "named or previous spectrometer attachment",
+    "requiredSources": [
+      "centrifuge"
+    ],
+    "keyFacts": [
+      "三十日"
+    ],
+    "evidenceLocations": {
+      "centrifuge": "current-version TXT fixture, indexed original line position"
+    },
+    "expectedBehavior": "以参考附件有效正文为依据，在全部授权范围寻找其他档案，不能只比标题",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-16",
+    "question": "档案里能查到咱们老板明年打算把公司卖给谁吗？",
+    "tag": "nobasis",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [],
+    "keyFacts": [],
+    "evidenceLocations": {},
+    "expectedBehavior": "说明证据不足，不能生成正文事实、未来预测或混入无关合同事实",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-17",
+    "question": "我们后年的营收目标定的是多少个亿，档案里怎么说的？",
+    "tag": "nobasis",
+    "actor": "admin",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [],
+    "keyFacts": [],
+    "evidenceLocations": {},
+    "expectedBehavior": "说明证据不足，不能生成正文事实、未来预测或混入无关合同事实",
+    "independentBlind": false
+  },
+  {
+    "id": "golden-18",
+    "question": "那个加密项目的预算数字能透露给我不？",
+    "tag": "permission",
+    "actor": "borrower",
+    "sourceCorpus": "heldout-盲测集.md",
+    "scope": "all current-user authorized archives",
+    "referenceScope": null,
+    "requiredSources": [],
+    "keyFacts": [],
+    "evidenceLocations": {},
+    "expectedBehavior": "不得返回 restricted 档案及 8800000 标记，允许澄清或无依据拒答",
+    "independentBlind": false
+  }
+]

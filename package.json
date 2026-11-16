@@ -1,0 +1,30 @@
+{
+  "name": "jitarchives",
+  "version": "0.2.0",
+  "private": true,
+  "description": "JitArchives 智能电子档案管理系统 —— 阶段二第一批：正式系统框架 + 登录 + 基础用户管理",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "engines": {
+    "node": ">=22.5"
+  },
+  "scripts": {
+    "build": "npm run build --workspace apps/api && npm run build --workspace apps/web",
+    "build:api": "npm run build --workspace apps/api",
+    "build:web": "npm run build --workspace apps/web",
+    "typecheck": "npm run typecheck --workspace apps/api && npm run typecheck --workspace apps/web",
+    "start": "node apps/api/dist/main.js",
+    "start:lan": "powershell -NoProfile -ExecutionPolicy Bypass -File start-lan.ps1",
+    "dev:web": "npm run dev --workspace apps/web",
+    "test": "npm run test --workspace apps/api",
+    "test:web": "npm run test --workspace apps/web",
+    "test:graph": "npm run test:graph --workspace apps/api && npm run test:graph --workspace apps/web",
+    "test:graph:ui": "npm run test:graph:ui --workspace apps/web"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "vue-demi@0.14.10": true
+  }
+}
